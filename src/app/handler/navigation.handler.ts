@@ -13,7 +13,15 @@ export class NavigationHandler {
     private control_se: HTMLElement;
     private control_sw: HTMLElement;
 
-    constructor(private navigationService: NavigationService, private controlsContainer: HTMLElement) {
+    private directSpeedHint: HTMLElement;
+    private turningSpeedHint: HTMLElement;
+
+    constructor(
+        private navigationService: NavigationService, 
+        controlsContainer: HTMLElement,
+        private rangeDirectSpeed: HTMLInputElement,
+        private rangeTurningSpeed: HTMLInputElement
+    ) {
         this.control_n = <HTMLElement>controlsContainer.querySelector(".N");
         this.control_ne = <HTMLElement>controlsContainer.querySelector(".NE");
         this.control_nw = <HTMLElement>controlsContainer.querySelector(".NW");
@@ -24,6 +32,9 @@ export class NavigationHandler {
         this.control_s = <HTMLElement>controlsContainer.querySelector(".S");
         this.control_se = <HTMLElement>controlsContainer.querySelector(".SE");
         this.control_sw = <HTMLElement>controlsContainer.querySelector(".SW");
+
+        this.directSpeedHint = <HTMLElement>this.rangeDirectSpeed.nextSibling?.nextSibling;
+        this.turningSpeedHint = <HTMLElement>this.rangeTurningSpeed.nextSibling?.nextSibling;
 
         this.registerEvents();
     }
@@ -39,7 +50,11 @@ export class NavigationHandler {
         this.registerEvent(this.control_s, -1, 0);
         this.registerEvent(this.control_se, -1, 1);
         this.registerEvent(this.control_sw, -1, -1);
+
+        this.rangeDirectSpeed.addEventListener('change', (event) => this.directSpeedChange());
+        this.rangeTurningSpeed.addEventListener('change', (event) => this.turningSpeedChange());
     }
+    
 
     private registerEvent(control: HTMLElement, vertical: number, horizontal: number) {
         const functionActivated = (event: Event) => this.activateMotion(event, control, vertical, horizontal);
@@ -60,6 +75,14 @@ export class NavigationHandler {
     private deactivateMotion(control: HTMLElement): void {
         control.classList.remove('control--pressed');
         console.log('Stop');
+    }
+
+    private directSpeedChange(): void {
+        this.directSpeedHint.textContent = this.rangeDirectSpeed.value + '%';
+    }
+
+    private turningSpeedChange(): void {
+        this.turningSpeedHint.textContent = this.rangeTurningSpeed.value  + '%';
     }
 
 }
