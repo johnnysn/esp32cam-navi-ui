@@ -1,0 +1,19 @@
+{
+  "name": "navi-cam",
+  "version": "1.0.0",
+  "description": "Frontend application for navigation a camera robot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tswatch": "tsc -w",
+    "scsswatch": "sass --watch src/styles:public/assets/css --style compressed",
+    "start": "concurrently \"npm run tswatch\" \"npm run scsswatch\""
+  },
+  "author": "Johnny Gomes",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^7.6.0",
+    "sass": "^1.56.1",
+    "typescript": "^4.9.3"
+  }
+}

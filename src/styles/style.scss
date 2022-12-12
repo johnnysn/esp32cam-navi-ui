@@ -1,0 +1,30 @@
+@import 'reset', 'variables', 'form/_', 'app';
+
+body {
+    line-height: 1;
+    font-family: andale mono, monospace;
+    background-color: $color-light;
+}
+
+header, footer, main {
+    display: flex;
+    justify-content: center;
+
+    .container {
+        max-width: 940px;
+    }
+}
+
+header {
+    background-color: $color-primary;
+    font-weight: 600;
+    padding: 1.5rem;
+}
+
+footer {
+    padding: 1.5rem;
+}
+
+.text-center {
+    text-align: center;
+}

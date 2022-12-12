@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NAVI CAM</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>BOT NAVI</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <div class="app">
+                <div class="app-configure">
+                    <form class="form">
+                        <div class="form-field">
+                            <label class="label" for="startSpeed">Mininum PWM value (start)</label>
+                            <input type="number" name="startSpeed" id="startSpeed" min="1" max="255" step="1" required>
+                            <span class="hint">Input a number from 1 to 255</span>
+                        </div>
+
+                        <div class="form-field">
+                            <label class="label" for="minimumSpeed">Mininum PWM value (moving)</label>
+                            <input type="number" name="minimumSpeed" id="minimumSpeed" min="1" max="255" step="1" required>
+                            <span class="hint">Input a number from 1 to 255</span>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="app-control">
+                    <div class="control__camera">
+                        <form class="form control__camera__controls">
+                            <div class="slider-field">
+                                <label class="label" for="rangeHorizontal">Horizontal</label>
+                                <input type="range" name="rangeHorizontal" id="rangeHorizontal" class="slider" min="-90" max="90" value="0">
+                                <span class="hint">0</span>
+                            </div>
+
+                            <div class="slider-field slider-field--vertical">
+                                <label class="label" for="rangeVertical">Vertical</label>
+                                <input type="range" name="rangeVertical" id="rangeVertical" class="slider slider--vertical" min="-90" max="90" value="0">
+                                <span class="hint">0</span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="control__navigation">
+                        navigation
+                    </div>
+                </div>
+
+                <div class="app-watch">
+                    watch
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            Developed by Johnny Gomes
+        </div>
+    </footer>
+    
+    <script src="assets/js/require.js"></script>
+    <script src="assets/js/index.js"></script>
+    <script>require(['app']);</script>
+</body>
+</html>

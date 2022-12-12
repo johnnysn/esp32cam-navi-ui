@@ -1,0 +1,94 @@
+@import '../variables';
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+
+    .label {
+        display: block;
+        float: left;
+        margin-top: -19px;
+        background: $color-light;
+        height: 1rem;
+        padding: 2px 5px 2px 5px;
+        color: $color-gray-text;
+        font-size: 14px;
+        overflow: hidden;
+    }
+
+    .hint {
+        display: block;
+        padding: 3px;
+        margin: 0 -9px -9px -9px;
+        text-align: center;
+        color: $color-gray-text;
+        font-size: 11px;
+    }
+
+    .form-field {
+        padding: 9px;
+        border:1px solid #CCCCCC;
+        margin-bottom: 30px;
+        border-radius: 3px;
+        width: 300px;
+
+        &:focus-within {
+            box-shadow: 0px 0px 8px $color-primary;
+        }
+
+        span {
+            background: $color-gray-bg;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="datetime"],
+        input[type="email"],
+        input[type="number"],
+        input[type="search"],
+        input[type="time"],
+        input[type="url"],
+        input[type="password"],
+        textarea,
+        select 
+        {
+            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            background: transparent;
+            width: 100%;
+            display: block;
+            outline: none;
+            border: none;
+            height: 25px;
+            line-height: 25px;
+            font-size: 16px;
+            padding: 0;
+            font-family: inherit;
+        }
+
+        textarea {
+            resize: none;
+        }
+    }
+
+    button {
+        padding: 0.8rem 2rem;
+        border: solid 1px $color-secondary;
+        border-radius: 5px;
+        color: $color-secondary;
+        background: transparent;
+        font-weight: 400;
+        font-size: 1.0rem;
+        font-family: inherit;
+
+        &:hover {
+            background-color: $color-secondary;
+            border-color: $color-secondary;
+            color: $color-light;
+        }
+    }
+
+}

@@ -1,0 +1,15 @@
+{
+    "compilerOptions": {
+        "module" : "AMD",
+        "outFile" : "public/assets/js/index.js",
+        "target": "ES6",
+        "noEmitOnError": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "removeComments" : true,
+        "sourceMap" : false
+    },
+    "include": [
+        "src/**/*"
+    ]
+}

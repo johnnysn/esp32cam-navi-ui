@@ -1,0 +1,53 @@
+.app {
+    display: grid;
+    grid-template-rows: 30vh auto auto;
+    grid-template-areas:
+        "watch"
+        "control"
+        "configure"
+    ;
+    gap: 20px 0;
+
+    .app-control {
+        grid-area: control;
+        justify-self: center;
+        display: grid;
+        grid-template-areas:
+            "camera"
+            "navigation"
+        ;
+        gap: 20px 0;
+
+        .control__camera {
+            grid-area: camera;
+
+            &__controls {
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                flex-wrap: nowrap;
+                padding: 1rem;
+            }
+        }
+
+        .control__navigation {
+            grid-area: navigation;
+            justify-self: center;
+            display: grid;
+            grid-template: repeat(3, 70px) / repeat(3, 70px);
+            grid-template-areas:
+                "NW N NE" 
+                "W C E"
+                "SW S SE"
+            ;
+        }
+    }
+
+    .app-watch {
+        grid-area: watch;
+    }
+
+    .app-configure {
+        grid-area: configure;
+    }
+}

@@ -1,0 +1,5 @@
+node_modules
+
+public/assets/css/style.css
+public/assets/js/index.js
+public/assets/**/*.map
