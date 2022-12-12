@@ -1,3 +1,5 @@
+@import 'variables';
+
 .app {
     display: grid;
     grid-template-rows: 30vh auto auto;
@@ -18,7 +20,7 @@
         ;
         gap: 20px 0;
 
-        .control__camera {
+        .camera {
             grid-area: camera;
 
             &__controls {
@@ -30,16 +32,65 @@
             }
         }
 
-        .control__navigation {
-            grid-area: navigation;
-            justify-self: center;
-            display: grid;
-            grid-template: repeat(3, 70px) / repeat(3, 70px);
-            grid-template-areas:
-                "NW N NE" 
-                "W C E"
-                "SW S SE"
-            ;
+        .navigation {
+            display: flex;
+            justify-content: space-around;
+
+            &__controls {
+                $navigation-button-size: 65px;
+
+                grid-area: navigation;
+                justify-self: center;
+                display: grid;
+                grid-template: repeat(3, $navigation-button-size) / repeat(3, $navigation-button-size);
+                grid-template-areas:
+                    "NW N NE" 
+                    "W C E"
+                    "SW S SE"
+                ;
+
+                .control {
+                    width: ($navigation-button-size - 10px);
+                    height: ($navigation-button-size - 10px);
+                    background-color: $color-gray-bg;
+                    border-radius: 5px;
+                    font-weight: 700;
+                    font-size: 1.2rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    -webkit-user-select: none; /* Safari */
+                    -ms-user-select: none; /* IE 10 and IE 11 */
+                    user-select: none; /* Standard syntax */
+
+                    &--pressed {
+                        background-color: $color-secondary;
+                        color: $color-light;
+                    }
+                }
+
+                @mixin navigation-class($area) {
+                    .#{$area} {
+                        grid-area: $area;
+                    }
+                }
+
+                @include navigation-class(NE);
+                @include navigation-class(N);
+                @include navigation-class(NW);
+                @include navigation-class(E);
+                @include navigation-class(C);
+                @include navigation-class(W);
+                @include navigation-class(SE);
+                @include navigation-class(S);
+                @include navigation-class(SW);
+            }
+
+            &__config {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
         }
     }
 

@@ -4,12 +4,16 @@
   //width: 100%;
   /* Width of the outside container */
   margin-bottom: 1px;
-  width: 180px;
+  width: 170px;
   position: relative;
+
+  &--short {
+    width: 140px;
+  }
 
   &--vertical {
     width: 80px;
-    height: 180px;
+    height: 170px;
 
     .hint {
       position: absolute;
@@ -35,10 +39,14 @@
   /* 0.2 seconds transition on hover */
   transition: opacity .2s;
 
-  width: 170px;
+  width: 150px;
+
+  &--short {
+    width: 130px;
+  }
 
   &--vertical {
-    width: 150px;
+    width: 140px;
     position: absolute;
     transform: translate(-25%, 75px) rotate(270deg);
     -moz-transform: rotate(270deg);
