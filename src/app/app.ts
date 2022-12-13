@@ -1,10 +1,12 @@
 import { CameraHandler } from "./handler/camera.handler";
 import { NavigationHandler } from "./handler/navigation.handler";
 import { CameraService } from "./service/camera.service";
+import { HttpService } from "./service/http.service";
 import { NavigationService } from "./service/navigation.service";
 
-const cameraService = new CameraService();
-const navigationService = new NavigationService();
+const httpService = new HttpService();
+const cameraService = new CameraService(httpService);
+const navigationService = new NavigationService(httpService);
 
 const rangeHorizontal = <HTMLInputElement>document.querySelector('#rangeHorizontal');
 const rangeVertical = <HTMLInputElement>document.querySelector('#rangeVertical');

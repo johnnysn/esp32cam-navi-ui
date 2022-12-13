@@ -1,3 +1,15 @@
+import { HttpService } from "./http.service";
+
 export class NavigationService {
     
+    constructor(private httpService: HttpService) {}
+
+    public stop(): Promise<string> {
+        return this.httpService.get<string>('/stop');
+    }
+
+    public setSpeed(leftForward: boolean, pwmLeft: number, rightForward: boolean, pwmRight: number): Promise<string> {
+        return this.httpService.get<string>(`/speed/${leftForward ? 1 : 0}/${pwmLeft}/${rightForward ? 1 : 0}/${pwmRight}`);
+    }
+
 }

@@ -69,12 +69,43 @@ export class NavigationHandler {
         event.preventDefault();
         event.stopImmediatePropagation();
         control.classList.add('control--pressed');
-        console.log('Move: ' + vertical + ',' + horizontal);
+        this.setMotion(vertical, horizontal);
     }
 
     private deactivateMotion(control: HTMLElement): void {
         control.classList.remove('control--pressed');
-        console.log('Stop');
+        this.navigationService.stop().then(
+            response => console.log(response),
+            error => console.error(error)
+        );
+    }
+
+    private setMotion(vertical: number, horizontal: number): void {
+        let leftPWM = 0, rightPWM = 0;
+        let leftForward = false, rightForward = false;
+
+        const directPwm = Math.round(parseInt(this.rangeDirectSpeed.value) * 2.55);
+        const turningPwm = Math.round(parseInt(this.rangeTurningSpeed.value) * 2.55);
+        
+        if (vertical == 0) { // Just turning
+            leftPWM = rightPWM = turningPwm;
+            leftForward = horizontal > 0;
+            rightForward = !leftForward;
+        } else {
+            leftForward = rightForward = (vertical > 0);
+            leftPWM = rightPWM = directPwm;
+
+            if (horizontal > 0) { // Steering
+                rightPWM -= 50; // TODO adjust speed differential
+            } else if (horizontal < 0) {
+                leftPWM -= 50; // TODO adjust speed differential
+            } 
+        }
+
+        this.navigationService.setSpeed(leftForward, leftPWM, rightForward, rightPWM).then(
+            response => console.log(response),
+            error => console.error(error)
+        );
     }
 
     private directSpeedChange(): void {

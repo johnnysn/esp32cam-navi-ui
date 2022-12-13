@@ -18,13 +18,22 @@ export class CameraHandler {
     }
 
     horizontalChange(): void {
-        console.log(this.rangeHorizontal.value);
-        this.horizontalHint.textContent = this.rangeHorizontal.value + '';
+        this.horizontalHint.textContent = this.rangeHorizontal.value + '°';
+        this.updateAngles();
     } 
 
     verticalChange(): void {
-        console.log(this.rangeVertical.value);
-        this.verticalHint.textContent = this.rangeVertical.value + '';
-    } 
+        this.verticalHint.textContent = this.rangeVertical.value + '°';
+        this.updateAngles();
+    }
+
+    updateAngles(): void {
+        this.cameraService
+            .setAngle(parseInt(this.rangeHorizontal.value) + 90, parseInt(this.rangeVertical.value) + 90)
+            .then(
+                response => console.log(response),
+                error => console.error(error)
+            );
+    }
 
 }
