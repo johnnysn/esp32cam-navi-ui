@@ -1,14 +1,36 @@
-@import 'variables';
+@import 'variables', 'responsiveness';
+
+.box {
+    border: solid 1px $color-gray-bg;
+    border-radius: 3px;
+    padding: .5rem;
+
+    &__label {
+        display: block;
+        float: left;
+        margin-top: -19px;
+        background: $color-light;
+        height: 1rem;
+        padding: 2px 5px 2px 5px;
+        color: $color-gray-text;
+        font-size: 14px;
+        overflow: hidden;
+    }
+}
 
 .app {
     display: grid;
-    grid-template-rows: 30vh auto auto;
+    grid-template-rows: 27vh auto auto;
     grid-template-areas:
         "watch"
         "control"
         "configure"
     ;
     gap: 20px 0;
+
+    @include md {
+        grid-template-rows: 40vh auto auto;
+    }
 
     .app-control {
         grid-area: control;
@@ -20,9 +42,16 @@
         ;
         gap: 20px 0;
 
+        @include md {
+            grid-template-areas:
+                "navigation camera"
+            ;
+            gap: 0 20px;
+        }
+
         .camera {
             grid-area: camera;
-
+    
             &__controls {
                 display: flex;
                 align-items: center;
@@ -33,8 +62,12 @@
         }
 
         .navigation {
-            display: flex;
-            justify-content: space-around;
+            grid-area: navigation;
+            
+            &__inner {
+                display: flex;
+                justify-content: space-around;
+            }
 
             &__controls {
                 $navigation-button-size: 65px;

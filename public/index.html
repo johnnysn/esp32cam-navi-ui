@@ -36,7 +36,8 @@
                 </div>
 
                 <div class="app-control">
-                    <div class="camera">
+                    <div class="camera box">
+                        <div class="box__label">Camera control</div>
                         <form class="form camera__controls">
                             <div class="slider-field">
                                 <label class="label" for="rangeHorizontal">Horizontal</label>
@@ -51,31 +52,35 @@
                             </div>
                         </form>
                     </div>
-                    <div class="navigation">
-                        <div class="navigation__controls">
-                            <div class="control NE">&#8599;</div>
-                            <div class="control N">&#8593;</div>
-                            <div class="control NW">&#8598;</div>
-                            <div class="control E">&#8594;</div>
-                            <div class="C"></div>
-                            <div class="control W">&#8592;</div>
-                            <div class="control SE">&#8600;</div>
-                            <div class="control S">&#8595;</div>
-                            <div class="control SW">&#8601;</div>
-                        </div>
+                    <div class="navigation box">
+                        <div class="box__label">Navigation</div>
 
-                        <form class="form navigation__config">
-                            <div class="slider-field slider-field--short">
-                                <label class="label" for="rangeDirectSpeed">Direct speed</label>
-                                <input type="range" name="rangeDirectSpeed" id="rangeDirectSpeed" class="slider slider--short" min="0" max="100" value="80">
-                                <span class="hint">80%</span>
+                        <div class="navigation__inner">
+                            <div class="navigation__controls">
+                                <div class="control NE">&#8599;</div>
+                                <div class="control N">&#8593;</div>
+                                <div class="control NW">&#8598;</div>
+                                <div class="control E">&#8594;</div>
+                                <div class="C"></div>
+                                <div class="control W">&#8592;</div>
+                                <div class="control SE">&#8600;</div>
+                                <div class="control S">&#8595;</div>
+                                <div class="control SW">&#8601;</div>
                             </div>
-                            <div class="slider-field slider-field--short">
-                                <label class="label" for="rangeTurningSpeed">Turning speed</label>
-                                <input type="range" name="rangeTurningSpeed" id="rangeTurningSpeed" class="slider slider--short" min="0" max="100" value="65">
-                                <span class="hint">65%</span>
-                            </div>
-                        </form>
+    
+                            <form class="form navigation__config">
+                                <div class="slider-field slider-field--short">
+                                    <label class="label" for="rangeDirectSpeed">Direct speed</label>
+                                    <input type="range" name="rangeDirectSpeed" id="rangeDirectSpeed" class="slider slider--short" min="0" max="100" value="80">
+                                    <span class="hint">80%</span>
+                                </div>
+                                <div class="slider-field slider-field--short">
+                                    <label class="label" for="rangeTurningSpeed">Turning speed</label>
+                                    <input type="range" name="rangeTurningSpeed" id="rangeTurningSpeed" class="slider slider--short" min="0" max="100" value="65">
+                                    <span class="hint">65%</span>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
 

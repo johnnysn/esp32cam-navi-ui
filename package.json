@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "tswatch": "tsc -w",
-    "scsswatch": "sass --watch src/styles:public/assets/css --style compressed",
+    "scsswatch": "sass --watch src/styles:public/assets/css --style compressed --no-source-map",
     "start": "concurrently \"npm run tswatch\" \"npm run scsswatch\""
   },
   "author": "Johnny Gomes",
