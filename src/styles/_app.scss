@@ -129,6 +129,11 @@
 
     .app-watch {
         grid-area: watch;
+
+        .watch-screen {
+            width: 100%;
+            height: 100%;
+        }
     }
 
     .app-configure {
