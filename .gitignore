@@ -1,4 +1,5 @@
 node_modules
+.vscode
 
 public/assets/css/style.css
 public/assets/js/index.js
