@@ -1,3 +1,4 @@
+import { env } from "./env";
 import { CameraHandler } from "./handler/camera.handler";
 import { NavigationHandler } from "./handler/navigation.handler";
 import { CameraService } from "./service/camera.service";
@@ -18,3 +19,7 @@ const rangeDirectSpeed = <HTMLInputElement>document.querySelector('#rangeDirectS
 const rangeTurningSpeed = <HTMLInputElement>document.querySelector('#rangeTurningSpeed');
 
 const navigationHandler = new NavigationHandler(navigationService, navigationContainer, rangeDirectSpeed, rangeTurningSpeed);
+
+// Setting up video streaming
+const viewport = <HTMLImageElement>document.querySelector('#streaming-viewport');
+viewport.src = env.streaming_uri;
