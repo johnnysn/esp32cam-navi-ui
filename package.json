@@ -8,6 +8,7 @@
     "tswatch": "tsc -w",
     "scsswatch": "sass --watch src/styles:public/assets/css --style compressed --no-source-map",
     "start": "concurrently \"npm run tswatch\" \"npm run scsswatch\"",
+    "build": "tsc && sass src/styles:public/assets/css --style compressed --no-source-map",
     "dist": "tsc && gulp"
   },
   "author": "Johnny Gomes",
