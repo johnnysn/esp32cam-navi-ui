@@ -22,4 +22,7 @@ const navigationHandler = new NavigationHandler(navigationService, navigationCon
 
 // Setting up video streaming
 const viewport = <HTMLImageElement>document.querySelector('#streaming-viewport');
-viewport.src = env.streaming_uri;
+const streamingUrl = location.origin + ':' + env.streaming_port + env.streaming_uri;
+viewport.src = streamingUrl;
+
+console.log('Streaming url: ' + streamingUrl);

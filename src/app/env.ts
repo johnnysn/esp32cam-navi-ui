@@ -1,4 +1,5 @@
 
 export const env = {
-    streaming_uri: ":81/stream"
+    streaming_port: 81,
+    streaming_uri: "/stream"
 }
