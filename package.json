@@ -7,13 +7,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "tswatch": "tsc -w",
     "scsswatch": "sass --watch src/styles:public/assets/css --style compressed --no-source-map",
-    "start": "concurrently \"npm run tswatch\" \"npm run scsswatch\""
+    "start": "concurrently \"npm run tswatch\" \"npm run scsswatch\"",
+    "dist": "tsc && gulp"
   },
   "author": "Johnny Gomes",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^7.6.0",
-    "sass": "^1.56.1",
+    "gulp": "^4.0.2",
+    "gulp-replace": "^1.1.4",
+    "gulp-sass": "^5.1.0",
+    "gulp-uglify": "^3.0.2",
+    "sass": "^1.57.0",
     "typescript": "^4.9.3"
   }
 }
