@@ -18,12 +18,12 @@ export class CameraHandler {
     }
 
     horizontalChange(): void {
-        this.horizontalHint.textContent = this.rangeHorizontal.value + '°';
+        this.horizontalHint.innerHTML = this.rangeHorizontal.value + '&deg;';
         this.updateAngles();
     } 
 
     verticalChange(): void {
-        this.verticalHint.textContent = this.rangeVertical.value + '°';
+        this.verticalHint.innerHTML = this.rangeVertical.value + '&deg;';
         this.updateAngles();
     }
 
