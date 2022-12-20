@@ -3,12 +3,14 @@ import { CameraHandler } from "./handler/camera.handler";
 import { ConfigurationHandler } from "./handler/configuration.handler";
 import { NavigationHandler } from "./handler/navigation.handler";
 import { CameraService } from "./service/camera.service";
+import { ConfigurationService } from "./service/configuration.service";
 import { HttpService } from "./service/http.service";
 import { NavigationService } from "./service/navigation.service";
 
 const httpService = new HttpService();
 const cameraService = new CameraService(httpService);
 const navigationService = new NavigationService(httpService);
+const configurationService = new ConfigurationService(httpService);
 
 const rangeHorizontal = <HTMLInputElement>document.querySelector('#rangeHorizontal');
 const rangeVertical = <HTMLInputElement>document.querySelector('#rangeVertical');
@@ -22,7 +24,8 @@ const rangeTurningSpeed = <HTMLInputElement>document.querySelector('#rangeTurnin
 const navigationHandler = new NavigationHandler(navigationService, navigationContainer, rangeDirectSpeed, rangeTurningSpeed);
 
 const txtIpAddress = <HTMLInputElement>document.querySelector('#txtIpAddress');
-const configurationHandler = new ConfigurationHandler(txtIpAddress, (ip: string) => {
+const cmbFrameSize = <HTMLInputElement>document.querySelector('#cmbFrameSize');
+const configurationHandler = new ConfigurationHandler(txtIpAddress, cmbFrameSize, configurationService, (ip: string) => {
     env.alternative_base_uri = ip ? 'http://' + ip : '';
     setupVideoStreaming();
 });

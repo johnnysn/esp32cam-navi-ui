@@ -24,25 +24,39 @@
                 </div>
 
                 <div class="app-configure">
-                    <form class="form">
-                        <div class="form-field">
-                            <label class="label" for="txtIpAddress">Alternative IP address</label>
-                            <input type="text" name="txtIpAddress" id="txtIpAddress" maxlength="15">
-                            <span class="hint">Input an IP that is other than origin</span>
-                        </div>
+                    <div class="box">
+                        <div class="box__label">Configuration</div>
 
-                        <div class="form-field">
-                            <label class="label" for="startSpeed">Mininum PWM value (start)</label>
-                            <input type="number" name="startSpeed" id="startSpeed" min="1" max="255" step="1" required>
-                            <span class="hint">Input a number from 1 to 255</span>
-                        </div>
-
-                        <div class="form-field">
-                            <label class="label" for="minimumSpeed">Mininum PWM value (moving)</label>
-                            <input type="number" name="minimumSpeed" id="minimumSpeed" min="1" max="255" step="1" required>
-                            <span class="hint">Input a number from 1 to 255</span>
-                        </div>
-                    </form>
+                        <form class="form">
+                            <div class="form-field">
+                                <label class="label" for="txtIpAddress">Alternative IP address</label>
+                                <input type="text" name="txtIpAddress" id="txtIpAddress" maxlength="15">
+                                <span class="hint">Input an IP that is other than origin</span>
+                            </div>
+    
+                            <div class="form-field">
+                                <label class="label" for="cmbFrameSize">Frame size</label>
+                                <select name="cmbFrameSize" id="cmbFrameSize">
+                                    <option value="6">VGA (640x480)</option>
+                                    <option value="5">CIF (400x296)</option>
+                                    <option selected value="4">QVGA (320x240)</option>
+                                </select>
+                                <span class="hint">Select the size of the video streaming</span>
+                            </div>
+    
+                            <div class="form-field">
+                                <label class="label" for="startSpeed">Mininum PWM value (start)</label>
+                                <input type="number" name="startSpeed" id="startSpeed" min="1" max="255" step="1" required>
+                                <span class="hint">Input a number from 1 to 255</span>
+                            </div>
+    
+                            <div class="form-field">
+                                <label class="label" for="minimumSpeed">Mininum PWM value (moving)</label>
+                                <input type="number" name="minimumSpeed" id="minimumSpeed" min="1" max="255" step="1" required>
+                                <span class="hint">Input a number from 1 to 255</span>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <div class="app-control">
