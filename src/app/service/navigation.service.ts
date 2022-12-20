@@ -9,7 +9,7 @@ export class NavigationService {
     }
 
     public setSpeed(leftForward: boolean, pwmLeft: number, rightForward: boolean, pwmRight: number): Promise<string> {
-        return this.httpService.get<string>(`/speed/${leftForward ? 1 : 0}/${pwmLeft}/${rightForward ? 1 : 0}/${pwmRight}`);
+        return this.httpService.get<string>(`/navi?dl=${leftForward ? 1 : 0}&sl=${pwmLeft}&dr=${rightForward ? 1 : 0}&sr=${pwmRight}`);
     }
 
 }
