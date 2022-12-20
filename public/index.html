@@ -26,6 +26,12 @@
                 <div class="app-configure">
                     <form class="form">
                         <div class="form-field">
+                            <label class="label" for="txtIpAddress">Alternative IP address</label>
+                            <input type="text" name="txtIpAddress" id="txtIpAddress" maxlength="15">
+                            <span class="hint">Input an IP that is other than origin</span>
+                        </div>
+
+                        <div class="form-field">
                             <label class="label" for="startSpeed">Mininum PWM value (start)</label>
                             <input type="number" name="startSpeed" id="startSpeed" min="1" max="255" step="1" required>
                             <span class="hint">Input a number from 1 to 255</span>

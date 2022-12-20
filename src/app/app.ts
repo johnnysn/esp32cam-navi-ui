@@ -1,5 +1,6 @@
 import { env } from "./env";
 import { CameraHandler } from "./handler/camera.handler";
+import { ConfigurationHandler } from "./handler/configuration.handler";
 import { NavigationHandler } from "./handler/navigation.handler";
 import { CameraService } from "./service/camera.service";
 import { HttpService } from "./service/http.service";
@@ -20,9 +21,20 @@ const rangeTurningSpeed = <HTMLInputElement>document.querySelector('#rangeTurnin
 
 const navigationHandler = new NavigationHandler(navigationService, navigationContainer, rangeDirectSpeed, rangeTurningSpeed);
 
-// Setting up video streaming
-const viewport = <HTMLImageElement>document.querySelector('#streaming-viewport');
-const streamingUrl = location.origin + ':' + env.streaming_port + env.streaming_uri;
-viewport.src = streamingUrl;
+const txtIpAddress = <HTMLInputElement>document.querySelector('#txtIpAddress');
+const configurationHandler = new ConfigurationHandler(txtIpAddress, (ip: string) => {
+    env.alternative_base_uri = ip ? 'http://' + ip : '';
+    setupVideoStreaming();
+});
 
-console.log('Streaming url: ' + streamingUrl);
+const viewport = <HTMLImageElement>document.querySelector('#streaming-viewport');
+
+function setupVideoStreaming() {
+    const streamingUrl = (env.alternative_base_uri ?? location.origin) + ':' + env.streaming_port + env.streaming_uri;
+    viewport.src = streamingUrl;
+
+    console.log('Streaming url: ' + streamingUrl);
+}
+
+setupVideoStreaming();
+
