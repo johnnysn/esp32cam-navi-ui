@@ -33,7 +33,8 @@ const configurationHandler = new ConfigurationHandler(txtIpAddress, cmbFrameSize
 const viewport = <HTMLImageElement>document.querySelector('#streaming-viewport');
 
 function setupVideoStreaming() {
-    const streamingUrl = (env.alternative_base_uri ?? location.origin) + ':' + env.streaming_port + env.streaming_uri;
+    console.log('Location origin: ' + location.origin);
+    const streamingUrl = (env.alternative_base_uri || location.origin) + ':' + env.streaming_port + env.streaming_uri;
     viewport.src = streamingUrl;
 
     console.log('Streaming url: ' + streamingUrl);
