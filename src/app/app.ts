@@ -17,7 +17,7 @@ const rangeVertical = <HTMLInputElement>document.querySelector('#rangeVertical')
 
 const cameraHandler = new CameraHandler(cameraService, rangeHorizontal, rangeVertical);
 
-const navigationContainer = <HTMLElement>document.querySelector('.navigation__controls');
+const navigationContainer = <HTMLElement>document.querySelector('#navigationBox');
 const rangeDirectSpeed = <HTMLInputElement>document.querySelector('#rangeDirectSpeed');
 const rangeTurningSpeed = <HTMLInputElement>document.querySelector('#rangeTurningSpeed');
 

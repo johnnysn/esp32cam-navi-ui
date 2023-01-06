@@ -16,6 +16,23 @@
         font-size: 14px;
         overflow: hidden;
     }
+
+    &__toggle {
+        display: block;
+        float: right;
+        background: transparent;
+        border: none;
+        margin-top: -3px;
+        height: 0.9rem;
+        color: $color-gray-text;
+        font-size: 14px;
+        overflow: hidden;
+        cursor: pointer;
+
+        @include md {
+            display: none;
+        }
+    }
 }
 
 .app {
@@ -40,7 +57,7 @@
             "camera"
             "navigation"
         ;
-        gap: 20px 0;
+        gap: 10px 0;
 
         @include md {
             grid-template-areas:
@@ -51,6 +68,7 @@
 
         .camera {
             grid-area: camera;
+            padding: 0.2rem;
     
             &__controls {
                 display: flex;
@@ -67,6 +85,7 @@
             &__inner {
                 display: flex;
                 justify-content: space-around;
+                padding-top: 1rem;
             }
 
             &__controls {

@@ -5,33 +5,39 @@ export class NavigationHandler {
     private control_n: HTMLElement;
     private control_ne: HTMLElement;
     private control_nw: HTMLElement;
-
     private control_w: HTMLElement;
     private control_e: HTMLElement;
-
     private control_s: HTMLElement;
     private control_se: HTMLElement;
     private control_sw: HTMLElement;
 
+    private btnToggle: HTMLElement;
+    private innerContainer: HTMLElement;
+
     private directSpeedHint: HTMLElement;
     private turningSpeedHint: HTMLElement;
 
+    private visible = true;
+
     constructor(
         private navigationService: NavigationService, 
-        controlsContainer: HTMLElement,
+        controlsBox: HTMLElement,
         private rangeDirectSpeed: HTMLInputElement,
         private rangeTurningSpeed: HTMLInputElement
     ) {
-        this.control_n = <HTMLElement>controlsContainer.querySelector(".N");
-        this.control_ne = <HTMLElement>controlsContainer.querySelector(".NE");
-        this.control_nw = <HTMLElement>controlsContainer.querySelector(".NW");
+        this.control_n = <HTMLElement>controlsBox.querySelector(".N");
+        this.control_ne = <HTMLElement>controlsBox.querySelector(".NE");
+        this.control_nw = <HTMLElement>controlsBox.querySelector(".NW");
 
-        this.control_e = <HTMLElement>controlsContainer.querySelector(".E");
-        this.control_w = <HTMLElement>controlsContainer.querySelector(".W");
+        this.control_e = <HTMLElement>controlsBox.querySelector(".E");
+        this.control_w = <HTMLElement>controlsBox.querySelector(".W");
 
-        this.control_s = <HTMLElement>controlsContainer.querySelector(".S");
-        this.control_se = <HTMLElement>controlsContainer.querySelector(".SE");
-        this.control_sw = <HTMLElement>controlsContainer.querySelector(".SW");
+        this.control_s = <HTMLElement>controlsBox.querySelector(".S");
+        this.control_se = <HTMLElement>controlsBox.querySelector(".SE");
+        this.control_sw = <HTMLElement>controlsBox.querySelector(".SW");
+
+        this.btnToggle = <HTMLElement>controlsBox.querySelector(".box__toggle");
+        this.innerContainer = <HTMLElement>controlsBox.querySelector(".navigation__inner");
 
         this.directSpeedHint = <HTMLElement>this.rangeDirectSpeed.nextSibling?.nextSibling;
         this.turningSpeedHint = <HTMLElement>this.rangeTurningSpeed.nextSibling?.nextSibling;
@@ -53,8 +59,19 @@ export class NavigationHandler {
 
         this.rangeDirectSpeed.addEventListener('change', (event) => this.directSpeedChange());
         this.rangeTurningSpeed.addEventListener('change', (event) => this.turningSpeedChange());
+        this.btnToggle.addEventListener('click', (event) => this.toggleView());
     }
-    
+
+    private toggleView(): any {
+        this.visible = !this.visible;
+        if (this.visible) {
+            this.btnToggle.innerHTML = '&#5169;';
+            this.innerContainer.style.display = 'flex';
+        } else {
+            this.btnToggle.innerHTML = '&#5167;';
+            this.innerContainer.style.display = 'none';
+        }
+    }
 
     private registerEvent(control: HTMLElement, vertical: number, horizontal: number) {
         const functionActivated = (event: Event) => this.activateMotion(event, control, vertical, horizontal);
