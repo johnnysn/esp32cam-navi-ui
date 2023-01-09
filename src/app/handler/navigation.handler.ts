@@ -18,6 +18,13 @@ export class NavigationHandler {
     private turningSpeedHint: HTMLElement;
 
     private visible = true;
+    
+    private leftPWM = 0;
+    private rightPWM = 0;
+    private leftForward = false
+    private rightForward = false;
+    private movingInterval: any = null;
+    private isMoving = false;
 
     constructor(
         private navigationService: NavigationService, 
@@ -86,11 +93,15 @@ export class NavigationHandler {
         event.preventDefault();
         event.stopImmediatePropagation();
         control.classList.add('control--pressed');
+        this.isMoving = true;
         this.setMotion(vertical, horizontal);
     }
 
     private deactivateMotion(control: HTMLElement): void {
         control.classList.remove('control--pressed');
+        this.isMoving = false;
+        if (this.movingInterval) clearInterval(this.movingInterval);
+        this.movingInterval = null;
         this.navigationService.stop().then(
             response => console.log(response),
             error => console.error(error)
@@ -98,28 +109,34 @@ export class NavigationHandler {
     }
 
     private setMotion(vertical: number, horizontal: number): void {
-        let leftPWM = 0, rightPWM = 0;
-        let leftForward = false, rightForward = false;
+        this.leftPWM = 0; this.rightPWM = 0;
+        this.leftForward = false; this.rightForward = false;
 
         const directPwm = Math.round(parseInt(this.rangeDirectSpeed.value) * 2.55);
         const turningPwm = Math.round(parseInt(this.rangeTurningSpeed.value) * 2.55);
         
         if (vertical == 0) { // Just turning
-            leftPWM = rightPWM = turningPwm;
-            leftForward = horizontal > 0;
-            rightForward = !leftForward;
+            this.leftPWM = this.rightPWM = turningPwm;
+            this.leftForward = horizontal > 0;
+            this.rightForward = !this.leftForward;
         } else {
-            leftForward = rightForward = (vertical > 0);
-            leftPWM = rightPWM = directPwm;
+            this.leftForward = this.rightForward = (vertical > 0);
+            this.leftPWM = this.rightPWM = directPwm;
 
             if (horizontal > 0) { // Steering
-                rightPWM -= 50; // TODO adjust speed differential
+                this.rightPWM -= 50; // TODO adjust speed differential
             } else if (horizontal < 0) {
-                leftPWM -= 50; // TODO adjust speed differential
+                this.leftPWM -= 50; // TODO adjust speed differential
             } 
         }
 
-        this.navigationService.setSpeed(leftForward, leftPWM, rightForward, rightPWM).then(
+        this.sendMotionCommand();
+        if (this.movingInterval) clearInterval(this.movingInterval);
+        this.movingInterval = setInterval(() => {if (this.isMoving) this.sendMotionCommand()}, 1000);
+    }
+
+    private sendMotionCommand() {
+        this.navigationService.setSpeed(this.leftForward, this.leftPWM, this.rightForward, this.rightPWM).then(
             response => console.log(response),
             error => console.error(error)
         );
