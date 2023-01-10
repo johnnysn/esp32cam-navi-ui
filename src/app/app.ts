@@ -14,8 +14,9 @@ const configurationService = new ConfigurationService(httpService);
 
 const rangeHorizontal = <HTMLInputElement>document.querySelector('#rangeHorizontal');
 const rangeVertical = <HTMLInputElement>document.querySelector('#rangeVertical');
+const checkFlashlight = <HTMLInputElement>document.querySelector('#chkFlashlight');
 
-const cameraHandler = new CameraHandler(cameraService, rangeHorizontal, rangeVertical);
+const cameraHandler = new CameraHandler(cameraService, rangeHorizontal, rangeVertical, checkFlashlight);
 
 const navigationContainer = <HTMLElement>document.querySelector('#navigationBox');
 const rangeDirectSpeed = <HTMLInputElement>document.querySelector('#rangeDirectSpeed');

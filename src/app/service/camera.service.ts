@@ -8,4 +8,8 @@ export class CameraService {
         return this.httpService.get<string>(`/servo?hor=${horizontalAngle}&ver=${verticalAngle}`);
     }
 
+    public setFlashlight(on: boolean): Promise<string> {
+        return this.httpService.get<string>(`/flash?value=${on ? 1 : 0}`);
+    }
+
 }

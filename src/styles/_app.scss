@@ -1,4 +1,4 @@
-@import 'variables', 'responsiveness';
+@import 'variables', 'responsiveness', 'typography';
 
 .box {
     border: solid 1px $color-gray-bg;
@@ -8,12 +8,11 @@
     &__label {
         display: block;
         float: left;
-        margin-top: -19px;
+        margin-top: -17px;
         background: $color-light;
         height: 1rem;
         padding: 2px 5px 2px 5px;
-        color: $color-gray-text;
-        font-size: 14px;
+        @include label-text;
         overflow: hidden;
     }
 
@@ -69,6 +68,16 @@
         .camera {
             grid-area: camera;
             padding: 0.2rem;
+            position: relative;
+
+            &__flash {
+                position: absolute;
+                top: 1rem;
+                left: 2rem;
+                @include label-text;
+                display: flex;
+                gap: 8px;
+            }
     
             &__controls {
                 display: flex;

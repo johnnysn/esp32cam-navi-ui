@@ -1,4 +1,4 @@
-@import '../variables';
+@import '../variables', '../typography';
 
 .form {
     display: flex;
@@ -14,8 +14,7 @@
         background: $color-light;
         height: 1rem;
         padding: 2px 5px 2px 5px;
-        color: $color-gray-text;
-        font-size: 14px;
+        @include label-text;
         overflow: hidden;
     }
 
@@ -91,5 +90,8 @@
             color: $color-light;
         }
     }
+}
 
+input[type="checkbox"] {
+    accent-color: $color-secondary;
 }

@@ -8,13 +8,19 @@ export class CameraHandler {
     constructor(
         private cameraService: CameraService,
         private rangeHorizontal: HTMLInputElement,
-        private rangeVertical: HTMLInputElement
+        private rangeVertical: HTMLInputElement,
+        private checkFlashlight: HTMLInputElement
     ) {
         this.rangeHorizontal.addEventListener('change', (event) => this.horizontalChange());
         this.rangeVertical.addEventListener('change', (event) => this.verticalChange());
+        this.checkFlashlight.addEventListener('change', (event) => this.flashlightChange());
 
         this.horizontalHint = <HTMLElement>this.rangeHorizontal.nextSibling?.nextSibling;
         this.verticalHint = <HTMLElement>this.rangeVertical.nextSibling?.nextSibling;
+    }
+
+    flashlightChange(): void {
+        this.cameraService.setFlashlight(this.checkFlashlight.checked);
     }
 
     horizontalChange(): void {
