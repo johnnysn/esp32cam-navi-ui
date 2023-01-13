@@ -7,23 +7,25 @@ import { ConfigurationService } from "./service/configuration.service";
 import { HttpService } from "./service/http.service";
 import { NavigationService } from "./service/navigation.service";
 
+// Instantiating services
 const httpService = new HttpService();
 const cameraService = new CameraService(httpService);
 const navigationService = new NavigationService(httpService);
 const configurationService = new ConfigurationService(httpService);
 
+// Camera handler
 const rangeHorizontal = <HTMLInputElement>document.querySelector('#rangeHorizontal');
 const rangeVertical = <HTMLInputElement>document.querySelector('#rangeVertical');
 const checkFlashlight = <HTMLInputElement>document.querySelector('#chkFlashlight');
-
 const cameraHandler = new CameraHandler(cameraService, rangeHorizontal, rangeVertical, checkFlashlight);
 
+// Navigation handler
 const navigationContainer = <HTMLElement>document.querySelector('#navigationBox');
 const rangeDirectSpeed = <HTMLInputElement>document.querySelector('#rangeDirectSpeed');
 const rangeTurningSpeed = <HTMLInputElement>document.querySelector('#rangeTurningSpeed');
-
 const navigationHandler = new NavigationHandler(navigationService, navigationContainer, rangeDirectSpeed, rangeTurningSpeed);
 
+// Configuration handler
 const txtIpAddress = <HTMLInputElement>document.querySelector('#txtIpAddress');
 const cmbFrameSize = <HTMLInputElement>document.querySelector('#cmbFrameSize');
 const configurationHandler = new ConfigurationHandler(txtIpAddress, cmbFrameSize, configurationService, (ip: string) => {
@@ -32,7 +34,6 @@ const configurationHandler = new ConfigurationHandler(txtIpAddress, cmbFrameSize
 });
 
 const viewport = <HTMLImageElement>document.querySelector('#streaming-viewport');
-
 function setupVideoStreaming() {
     console.log('Location origin: ' + location.origin);
     const streamingUrl = (env.alternative_base_uri || location.origin) + ':' + env.streaming_port + env.streaming_uri;
