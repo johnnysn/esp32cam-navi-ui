@@ -1,4 +1,6 @@
+import { env } from "../env";
 import { ConfigurationService } from "../service/configuration.service";
+import { StreamingHandler } from "./streaming.handler";
 
 export class ConfigurationHandler {
 
@@ -6,7 +8,7 @@ export class ConfigurationHandler {
         private txtIpAddress: HTMLInputElement,
         private cmbFrameSize: HTMLInputElement,
         private configurationService: ConfigurationService,
-        private ipChangedCallback: Function
+        private streamingHandler: StreamingHandler
     ) {
         txtIpAddress.addEventListener('change', (event) => this.setAlternativeIp());
         cmbFrameSize.addEventListener('change', (event) => this.setFrameSize())
@@ -15,10 +17,11 @@ export class ConfigurationHandler {
     setAlternativeIp() {
         const value = this.txtIpAddress.value;
         if (value && /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/.test(value)) {
-            this.ipChangedCallback(value);
+            env.alternative_base_uri = 'http://' + value;
         } else {
-            this.ipChangedCallback('');
+            env.alternative_base_uri = '';
         }
+        this.streamingHandler.setupVideoStreaming();
     }
 
     setFrameSize() {
