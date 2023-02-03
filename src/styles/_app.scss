@@ -78,6 +78,24 @@
                 display: flex;
                 gap: 8px;
             }
+
+            &__inv-hor {
+                position: absolute;
+                bottom: 30%;
+                left: 3rem;
+                @include label-text;
+                display: flex;
+                gap: 8px;
+            }
+
+            &__inv-ver {
+                position: absolute;
+                bottom: .2rem;
+                left: 67%;
+                @include label-text;
+                display: flex;
+                gap: 8px;
+            }
     
             &__controls {
                 display: flex;
